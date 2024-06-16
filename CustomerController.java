@@ -5,11 +5,11 @@ public class CustomerController {
     public static void addCustomer(ArrayList<Customer> customers,Scanner scn)
     {
         System.out.print("Please enter your name: ");
-        String name = scn.next();
+        String name = scn.nextLine();
         System.out.print("Please enter your email address: ");
-        String email = scn.next();
+        String email = scn.nextLine();
         System.out.print("Please enter your phone number: ");
-        String phoneNo = scn.next();
+        String phoneNo = scn.nextLine();
 
         Customer customer = new Customer(email, phoneNo);
         customer.setId(customers.size()+1);
