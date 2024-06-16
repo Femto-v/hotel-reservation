@@ -127,39 +127,51 @@ public class ReservationsController {
 	}
 	
 	public static void editReservation(ArrayList<Customer> customers, ArrayList<Room> rooms, ArrayList<Reservation> reservations, Scanner scanner) {
-		System.out.println("Enter reservation id (int): \n-1 to show all reservations ids");
+		System.out.printf("Enter reservation id (int)(-1 to show all reservations ids): ");
 		int id = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println();
 		if (id==-1) {
 			showAllReservations(reservations, scanner);
-			System.out.println("Enter rservation id (int): ");
+			System.out.printf("Enter reservation id (int): ");
 			id = scanner.nextInt();
+			scanner.nextLine();
+			System.out.println();
 		}
 		Reservation reservation = reservations.get(id);
 		
-		System.out.println("Enter arrival date (yyyy-MM-dd): \n-1 to keep it");
+		System.out.printf("Enter arrival date (yyyy-MM-dd)(-1 to keep it): ");
 		String arrDate = scanner.next();
+		System.out.println();
 		if (arrDate.equals("-1")) {
 			arrDate = reservation.getArrivalDatetoString();
 		}
-		
-		System.out.println("Enter departure date (yyyy-MM-dd): \n-1 to keep it");
+
+		LocalDate arrivalDate = LocalDate.parse(arrDate, formatter);
+
+		System.out.printf("Enter departure date (yyyy-MM-dd)(-1 to keep it): ");
 		String depDate = scanner.next();
+		System.out.println();
 		if (depDate.equals("-1")) {
 			depDate = reservation.getDepartureDatetoString();
 		}
 		
-		System.out.println("Enter room id (int): \n-1 to keep it\n-2 to show all rooms");
+		LocalDate departureDate = LocalDate.parse(depDate, formatter);
+		System.out.printf("Enter room id (int): \n-1 to keep it\n-2 to show all rooms\n\n choose: ");
 		int roomId = scanner.nextInt();
+		System.out.println();
 		if (roomId==-1) {
 			roomId = reservation.getRoom().getID();
 		} else if (roomId==-2) {
 			RoomsController.showAllRooms(rooms);
-			System.out.println("Enter room id (int): ");
+			System.out.printf("Enter room id (int): ");
 			roomId = scanner.nextInt();
+			scanner.nextLine();
+			System.out.println();
 		}
 		
-		LocalDate arrivalDate = LocalDate.parse(arrDate, formatter);
-		LocalDate departureDate = LocalDate.parse(depDate, formatter);
+		
+		
 		
 		Customer Customer = reservation.getCustomer();
 		Room room = RoomsController.getRoomById(roomId, rooms);
@@ -170,11 +182,12 @@ public class ReservationsController {
 			int days = Period.between(arrivalDate, departureDate).getDays();
 			double sum = days*room.getPrice();
 			//double total = sum - sum*Customer.getDiscount()/100;
-			System.out.println("Total before discount = "+sum);
+			System.out.println("Total before discount = "+sum  + "\n");
 			//System.out.println("Total after discount = "+sum);
-			System.out.println("Will you pay now?\n1. Yes (print receipt)\n2. No");
+			System.out.println("Will you pay now?\n1. Yes (print receipt)\n2. No\n\n Choose: ");
 			
 			int j = scanner.nextInt();
+			scanner.nextLine();
 			String status;
 			if (j==1) {
 				System.out.println("Payment Method? (default = cash)\n1. Cash\n2. E-Wallet\n3. Credit Card\n");

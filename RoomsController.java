@@ -13,14 +13,14 @@ public class RoomsController {
     }
 
     public static void addNewRoom(ArrayList<Room> rooms, Scanner scanner) {
-        System.out.println("Enter capacity (int): ");
+        System.out.printf("Enter capacity (int): ");
         int capacity = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
-        System.out.println("Enter type (String): ");
+        System.out.printf("Enter type (String): ");
         String type = scanner.nextLine();
 
-        System.out.println("Enter price (double): ");
+        System.out.printf("Enter price (double): ");
         double price = scanner.nextDouble();
         scanner.nextLine(); // Consume newline
 
@@ -28,7 +28,7 @@ public class RoomsController {
         Room room = new Room(id, capacity, type, price);
         rooms.add(room);
 
-        System.out.println("Room added successfully!");
+        System.out.println("\nRoom added successfully!");
         System.out.println();
     }
 
@@ -42,12 +42,14 @@ public class RoomsController {
     }
 
     public static void editRoom(ArrayList<Room> rooms, Scanner scanner) {
-        System.out.println("Enter room id: \n-1 to show all rooms");
+        System.out.printf("Enter room id: \n-1 to show all rooms\n Choose: ");
         int id = scanner.nextInt();
+        scanner.nextLine();
         if (id == -1) {
             showAllRooms(rooms);
-            System.out.println("Enter room id: ");
+            System.out.printf("Enter room id: ");
             id = scanner.nextInt();
+            scanner.nextLine();
         }
         Room room = getRoomById(id, rooms);
 
@@ -56,17 +58,19 @@ public class RoomsController {
             return;
         }
 
-        System.out.println("Enter capacity (int): \n-1 to keep it");
+        System.out.printf("Enter capacity (int)(-1 to keep it): ");
         int capacity = scanner.nextInt();
+        scanner.nextLine();
         if (capacity == -1) capacity = room.getCapacity();
 
-        System.out.println("Enter room type (String): \n-1 to keep it");
+        System.out.printf("Enter room type (String)(-1 to keep it): ");
         scanner.nextLine(); // Consume newline
         String type = scanner.nextLine();
         if (type.equals("-1")) type = room.getType();
 
-        System.out.println("Enter room price (double): \n-1 to keep it");
+        System.out.printf("Enter room price (double)(-1 to keep it): ");
         double price = scanner.nextDouble();
+        scanner.nextLine();
         if (price == -1) price = room.getPrice();
 
         room.setCapacity(capacity);
