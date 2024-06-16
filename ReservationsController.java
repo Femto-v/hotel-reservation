@@ -173,7 +173,7 @@ public class ReservationsController {
 		
 		
 		
-		Customer Customer = reservation.getCustomer();
+		// Customer Customer = reservation.getCustomer();
 		Room room = RoomsController.getRoomById(roomId, rooms);
 		if (room.isReserved(arrivalDate, departureDate)) {
 			System.out.println("This room is reserved!");
@@ -184,10 +184,12 @@ public class ReservationsController {
 			//double total = sum - sum*Customer.getDiscount()/100;
 			System.out.println("Total before discount = "+sum  + "\n");
 			//System.out.println("Total after discount = "+sum);
-			System.out.println("Will you pay now?\n1. Yes (print receipt)\n2. No\n\n Choose: ");
+			System.out.printf("Will you pay now?\n1. Yes (print receipt)\n2. No\n\n Choose: ");
 			
 			int j = scanner.nextInt();
 			scanner.nextLine();
+			System.out.println();
+
 			String status;
 			if (j==1) {
 				System.out.println("Payment Method? (default = cash)\n1. Cash\n2. E-Wallet\n3. Credit Card\n");
