@@ -5,9 +5,9 @@ public class EmployeeController {
     public static void addEmployee(ArrayList<Employee> employees, Scanner scn)
     {
         System.out.print("Please enter your name: ");
-        String name = scn.next();
+        String name = scn.nextLine();
         System.out.print("Please enter your job position: ");
-        String job = scn.next();
+        String job = scn.nextLine();
         System.out.print("Please enter your salary: ");
         double salary = scn.nextDouble();
         scn.nextLine();
