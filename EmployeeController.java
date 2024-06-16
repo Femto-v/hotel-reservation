@@ -20,7 +20,10 @@ public class EmployeeController {
 
     public static void printEmployeeInfo(ArrayList<Employee> employees)
     {
-        System.out.println("Employee information");
+        System.out.println("Employee information\n");
+        if(employees.size() == 0){
+            System.out.println("(None)\n");
+        }
         for(Employee emp:employees)
         {
             

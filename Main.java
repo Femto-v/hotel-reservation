@@ -199,7 +199,7 @@ public class Main {
                     System.out.println("Returning to Home Menu...\n");
                     return; 
                 default:
-                    System.out.println("Invalid option. Please try again.");
+                    System.out.println("Invalid option. Please try again.\n");
                     break;
             }
     }

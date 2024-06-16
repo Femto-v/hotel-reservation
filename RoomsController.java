@@ -42,7 +42,7 @@ public class RoomsController {
     }
 
     public static void editRoom(ArrayList<Room> rooms, Scanner scanner) {
-        System.out.printf("Enter room id: \n-1 to show all rooms\n Choose: ");
+        System.out.printf("Enter room id (-1 to show all rooms): ");
         int id = scanner.nextInt();
         scanner.nextLine();
         if (id == -1) {
@@ -64,7 +64,6 @@ public class RoomsController {
         if (capacity == -1) capacity = room.getCapacity();
 
         System.out.printf("Enter room type (String)(-1 to keep it): ");
-        scanner.nextLine(); // Consume newline
         String type = scanner.nextLine();
         if (type.equals("-1")) type = room.getType();
 
@@ -77,7 +76,7 @@ public class RoomsController {
         room.setType(type);
         room.setPrice(price);
 
-        System.out.println("Room updated successfully!\n");
+        System.out.println("\nRoom updated successfully!\n");
     }
 
     public static Room getRoomById(int id, ArrayList<Room> rooms) {
