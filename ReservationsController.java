@@ -82,7 +82,7 @@ public class ReservationsController {
 			System.out.println("Room id: " + r.getRoom().getID());
 			System.out.println("Price: "+ r.getPrice());
 			System.out.println("Status: "+r.getStatus());
-			System.out.println("---------------------------------------");
+			System.out.println("---------------------------------------\n");
 		}
 	}
 	
