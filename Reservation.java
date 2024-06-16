@@ -10,15 +10,17 @@ public class Reservation {
 	private String status;
 	private Customer customer;
 	private Room room;
+	private String paymentMethod;
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
-	public Reservation(LocalDate arrivalDate, LocalDate departureDate, double price, String status, Customer customer, Room room) {
+	public Reservation(LocalDate arrivalDate, LocalDate departureDate, double price, String status, Customer customer, Room room, String paymentMethod) {
 		this.arrivalDate = arrivalDate;
 		this.departureDate = departureDate;
 		this.price = price;
 		this.status = status;
 		this.customer = customer;
 		this.room = room;
+		this.paymentMethod = paymentMethod;
 	}
 	
 	public Reservation() {}
@@ -54,6 +56,10 @@ public class Reservation {
 	public Room getRoom() {
 		return room;
 	}
+
+	public String getPaymentMethod(){
+		return paymentMethod;
+	}
 	
 	public void setArrivalDate(LocalDate arrivalDate) {
 		this.arrivalDate = arrivalDate;
@@ -78,6 +84,10 @@ public class Reservation {
 	public void setRoom(Room room) {
 		this.room = room;
 	}
+
+	public void setPaymentMethod(String paymentMethod){
+		this.paymentMethod = paymentMethod;
+	}
 	
 	public void print() {
 		System.out.println("\n***********************************");
@@ -93,6 +103,8 @@ public class Reservation {
 		double price = days*room.getPrice();
 		System.out.println("Price: "+price);
 		System.out.println("Total after discount: "+this.price);
+		System.out.println("Payment Status: "+ this.status);
+		System.out.println("Payment Method: "+this.paymentMethod);
 		System.out.println("***********************************\n");
 	}
 

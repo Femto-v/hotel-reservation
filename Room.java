@@ -71,16 +71,14 @@ public class Room {
 		}
 	}
     public boolean isReserved(LocalDate startDate, LocalDate finishDate) {
-		boolean b = false;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		for (LocalDate date=startDate;date.isBefore(finishDate);date=date.plusDays(1)) {
-			String d = date.format(formatter);
-			if (reservedDates.contains(d)) {
-				b = true;
-				break;
-			}
-		}
-		return b;
+        for (LocalDate date = startDate; date.isBefore(finishDate); date = date.plusDays(1)) {
+        String formattedDate = date.format(formatter);
+        if (reservedDates.contains(formattedDate)) {
+            return true; // Room is reserved on this date
+            }
+        }
+        return false; // Room is not reserved for any date in the range
 	}
     public void print() {
 		System.out.println("id: "+id);

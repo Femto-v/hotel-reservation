@@ -60,12 +60,31 @@ public class ReservationsController {
 			scanner.nextLine();
 			System.out.println("");
 			String status;
+			String paymentMethodUpdate = "not specified";
 			if (j==1) {
+				System.out.println("Payment Method? (default = cash)\n1. Cash\n2. E-Wallet\n3. Credit Card\n");
+				System.out.printf("Choose: ");
+				int paymentMethodNumber = scanner.nextInt();
+				scanner.nextLine();
+				switch (paymentMethodNumber) {
+					case 1:
+						paymentMethodUpdate= "Cash";		
+						break;
+					case 2:
+						paymentMethodUpdate= "E-Wallet";		
+						break;
+					case 3:
+						paymentMethodUpdate= "Credit Card";		
+						break;
+					default:
+						paymentMethodUpdate= "Cash";	
+						break;
+				}
 				status = "Paid";
 			} else {
 				status = "Reserved";
 			}
-			Reservation r = new Reservation(arrivalDate, departureDate, sum, status, customer, room);
+			Reservation r = new Reservation(arrivalDate, departureDate, sum, status, customer, room, paymentMethodUpdate);
 			reservations.add(r);
 			r.print();
 			System.out.println();
@@ -82,6 +101,9 @@ public class ReservationsController {
 			System.out.println("Room id: " + r.getRoom().getID());
 			System.out.println("Price: "+ r.getPrice());
 			System.out.println("Status: "+r.getStatus());
+			if(r.getStatus().equals("Paid")){
+				System.out.println("Payment Method: " + r.getPaymentMethod());
+			}
 			System.out.println("---------------------------------------\n");
 		}
 	}
@@ -105,7 +127,7 @@ public class ReservationsController {
 	}
 	
 	public static void editReservation(ArrayList<Customer> customers, ArrayList<Room> rooms, ArrayList<Reservation> reservations, Scanner scanner) {
-		System.out.println("Enter rservation id (int): \n-1 to show all reservations ids");
+		System.out.println("Enter reservation id (int): \n-1 to show all reservations ids");
 		int id = scanner.nextInt();
 		if (id==-1) {
 			showAllReservations(reservations, scanner);
@@ -151,10 +173,28 @@ public class ReservationsController {
 			System.out.println("Total before discount = "+sum);
 			//System.out.println("Total after discount = "+sum);
 			System.out.println("Will you pay now?\n1. Yes (print receipt)\n2. No");
-
+			
 			int j = scanner.nextInt();
 			String status;
 			if (j==1) {
+				System.out.println("Payment Method? (default = cash)\n1. Cash\n2. E-Wallet\n3. Credit Card\n");
+				System.out.printf("Choose: ");
+				int paymentMethodNumberEdit = scanner.nextInt();
+				scanner.nextLine();
+				switch (paymentMethodNumberEdit) {
+					case 1:
+						reservation.setPaymentMethod("Cash");		
+						break;
+					case 2:
+						reservation.setPaymentMethod("E-Wallet");	
+						break;
+					case 3:
+						reservation.setPaymentMethod("Credit Card");	
+						break;
+					default:
+						reservation.setPaymentMethod("Cash");		
+						break;
+				}
 				status = "Paid";
 			} else {
 				status = "Reserved";
@@ -171,10 +211,8 @@ public class ReservationsController {
 	}
 	
 	public static void payReservation(ArrayList<Reservation> reservations, Scanner scanner) {
-		System.out.printf("Enter reservation id (int)(-1 to show all reservations ids):");
+		System.out.println("Enter reservation id (int): \n-1 to show all reservations ids");
 		int id = scanner.nextInt();
-		scanner.nextLine();
-		System.out.println();
 		if (id==-1) {
 			showAllReservations(reservations, scanner);
 			System.out.println("Enter reservation id (int): ");
@@ -184,9 +222,9 @@ public class ReservationsController {
 		Reservation reservation = reservations.get(id);
 		if (reservation.getStatus().equals("Reserved")) {
 			reservation.setStatus("Paid");
-			System.out.println("Reservation paid successfully!\n");
+			System.out.println("Reservation paid successfully!");
 		} else {
-			System.out.println("This reservation is already paid!\n");
+			System.out.println("This reservation is already paid!");
 		}
 	}
 
