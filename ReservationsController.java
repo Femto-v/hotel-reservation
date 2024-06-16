@@ -171,8 +171,10 @@ public class ReservationsController {
 	}
 	
 	public static void payReservation(ArrayList<Reservation> reservations, Scanner scanner) {
-		System.out.println("Enter reservation id (int): \n-1 to show all reservations ids");
+		System.out.printf("Enter reservation id (int)(-1 to show all reservations ids):");
 		int id = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println();
 		if (id==-1) {
 			showAllReservations(reservations, scanner);
 			System.out.println("Enter reservation id (int): ");
@@ -182,9 +184,9 @@ public class ReservationsController {
 		Reservation reservation = reservations.get(id);
 		if (reservation.getStatus().equals("Reserved")) {
 			reservation.setStatus("Paid");
-			System.out.println("Reservation paid successfully!");
+			System.out.println("Reservation paid successfully!\n");
 		} else {
-			System.out.println("This reservation is already paid!");
+			System.out.println("This reservation is already paid!\n");
 		}
 	}
 
