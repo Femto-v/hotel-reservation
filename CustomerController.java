@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class CustomerController implements Searchable {
     private static ArrayList<Customer> customers = new ArrayList<>();
 
-    public static void addCustomer(Scanner scn) {
+    public static void addCustomer(ArrayList<Customer> customers,Scanner scn) {
         System.out.print("Please enter your name: ");
         String name = scn.nextLine();
         System.out.print("Please enter your email address: ");
@@ -32,7 +32,7 @@ public class CustomerController implements Searchable {
         System.out.println("");
     }
 
-    public static void printCustomerInfo() {
+    public static void printCustomerInfo(ArrayList<Customer> customers) {
         System.out.println("Customer information");
         for (Customer customer : customers) {
             System.out.println("--------------------------------");
