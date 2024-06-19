@@ -178,13 +178,13 @@ public class Main {
             System.out.println();
             switch (i) {
                 case 1:
-                    EmployeeController.addEmployee(employees, scanner);
+                    EmployeeController.addEmployee(scanner);
                     break;
                 case 2:
-                    EmployeeController.editEmployee(employees, scanner);
+                    EmployeeController.editEmployee(scanner);
                     break;
                 case 3:
-                    EmployeeController.printEmployeeInfo(employees);
+                    EmployeeController.printEmployeeInfo();
                     break;
                 case 4:
                     RoomsController.addNewRoom(rooms, scanner);
