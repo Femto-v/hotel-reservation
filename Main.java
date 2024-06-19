@@ -111,7 +111,7 @@ public class Main {
             System.out.println("-----------------");
             System.out.println("| CUSTOMER MENU |");
             System.out.println("-----------------");
-            System.out.println("1. Register as the guest for the hotel");
+            System.out.println("1. Register");
             System.out.println("2. Create new reservation");// including make payment // have to display the room information menu
             System.out.println("3. Edit reservation");
             System.out.println("4. Edit profile");
@@ -125,7 +125,7 @@ public class Main {
             System.out.println();
             switch (i) {
                 case 1:
-                    CustomerController.addCustomer(customers, scanner);
+                    CustomerController.addCustomer(scanner);
                     break;
                 case 2:
                     ReservationsController.createNewReservation(customers, rooms, reservations, scanner);
@@ -137,7 +137,7 @@ public class Main {
                     CustomerController.editCustomer(scanner);
                     break;
                 case 5:
-                    CustomerController.printCustomerInfo(customers);
+                    CustomerController.printCustomerInfo();
                     break;
                 case 6:
                     ReservationsController.showAllReservations(reservations, scanner);
@@ -178,10 +178,10 @@ public class Main {
             System.out.println();
             switch (i) {
                 case 1:
-                    EmployeeController.addEmployee(scanner);
+                    EmployeeController.addEmployee( scanner);
                     break;
                 case 2:
-                    EmployeeController.editEmployee(scanner);
+                    EmployeeController.editEmployee( scanner);
                     break;
                 case 3:
                     EmployeeController.printEmployeeInfo();
