@@ -134,7 +134,7 @@ public class Main {
                     ReservationsController.editReservation(customers, rooms, reservations, scanner);
                     break;
                 case 4:
-                    CustomerController.editCustomer(customers, scanner);
+                    CustomerController.editCustomer(scanner);
                     break;
                 case 5:
                     CustomerController.printCustomerInfo(customers);
