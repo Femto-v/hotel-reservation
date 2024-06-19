@@ -10,15 +10,15 @@ public class CustomerController {
         String email = scn.nextLine();
 
         // Enter phone number with exception handling
-        boolean validPhoneNumber = false;
         String phoneNo = "";
-        while (!validPhoneNumber) {
-            System.out.print("Please enter your phone number: ");
-            phoneNo = scn.nextLine();
-            if (phoneNo.matches("\\d+")) {
-                validPhoneNumber = true;
-            } else {
-                System.out.println("Invalid input. Please enter digits only.");
+        while (true) {
+            try {
+                System.out.print("Please enter your phone number: ");
+                phoneNo = scn.nextLine();
+                validatePhoneNumber(phoneNo);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
 
@@ -108,5 +108,11 @@ public class CustomerController {
             }
         }
         return null;
+    }
+
+    public static void validatePhoneNumber(String phoneNo) {
+        if (!phoneNo.matches("\\d+")) {
+            throw new IllegalArgumentException("Invalid input. Please enter digits only.");
+        }
     }
 }
