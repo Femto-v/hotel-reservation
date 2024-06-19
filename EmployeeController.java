@@ -2,18 +2,29 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmployeeController {
-    public static void addEmployee(ArrayList<Employee> employees, Scanner scn)
-    {
+    public static void addEmployee(ArrayList<Employee> employees, Scanner scn) {
         System.out.print("Please enter your name: ");
         String name = scn.nextLine();
         System.out.print("Please enter your job position: ");
         String job = scn.nextLine();
-        System.out.print("Please enter your salary: ");
-        double salary = scn.nextDouble();
-        scn.nextLine();
+
+        // Enter salary with exception handling
+        double salary = 0;
+        while (true) {
+            try {
+                System.out.print("Please enter your salary: ");
+                salary = scn.nextDouble();
+                scn.nextLine(); // Consume newline
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number for salary.");
+                scn.nextLine(); // Consume the invalid input
+            }
+        }
         System.err.println("");
+        
         Employee emp = new Employee(salary, job);
-        emp.setId(employees.size()+1);
+        emp.setId(employees.size() + 1);
         emp.setName(name);
         employees.add(emp);
     }
@@ -75,13 +86,21 @@ public class EmployeeController {
             job = emp.getJob();
         }
 
-        System.out.println("Enter the new salary : \n (enter '-1' to keep it)");
-        double salary = scn.nextDouble();
-        if(salary == -1)
-        {
-            salary = emp.getSalary();
+        double salary = emp.getSalary();
+        while (true) {
+            try {
+                System.out.println("Enter the new salary:  (enter '-1' to keep it)");
+                double inputSalary = scn.nextDouble();
+                scn.nextLine(); // Consume newline
+                if (inputSalary != -1) {
+                    salary = inputSalary;
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number for salary.");
+                scn.nextLine(); // Consume the invalid input
+            }
         }
-
         emp.setName(name);
         emp.setJob(job);;
         emp.setSalary(salary);
