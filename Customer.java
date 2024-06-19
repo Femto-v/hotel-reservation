@@ -25,6 +25,7 @@ public class Customer extends User {
 		this.phoneNo = phoneNo;
 	}
 	
+	@Override
 	public void print() {
 		System.out.println("id: "+id);
 		System.out.println("Name: "+name);

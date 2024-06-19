@@ -1,4 +1,4 @@
-public class User {
+public abstract class User implements Printable {
     protected int id;
     protected String name;
 
@@ -17,6 +17,8 @@ public class User {
 	public String getName() {
 		return name;
 	}
-
+	
+	// Abstract method to be implemented by subclasses
+	public abstract void print();
 
 }

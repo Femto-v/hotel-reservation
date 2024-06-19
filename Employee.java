@@ -28,7 +28,8 @@ public class Employee extends User{
 		this.job = job;
 	}
 
-    public void print() {
+	@Override
+    	public void print() {
 		System.out.println("\n-------------------------");
 		System.out.println("id: "+id);
 		System.out.println("Name: "+name);
