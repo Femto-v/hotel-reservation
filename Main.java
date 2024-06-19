@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import java.util.Scanner;
 class LoginError extends Exception {
     public LoginError(String message) {
@@ -125,7 +124,7 @@ public class Main {
             System.out.println();
             switch (i) {
                 case 1:
-                    CustomerController.addCustomer(scanner);
+                    CustomerController.addCustomer(customers, scanner);// add customers argument
                     break;
                 case 2:
                     ReservationsController.createNewReservation(customers, rooms, reservations, scanner);
@@ -137,7 +136,7 @@ public class Main {
                     CustomerController.editCustomer(scanner);
                     break;
                 case 5:
-                    CustomerController.printCustomerInfo();
+                    CustomerController.printCustomerInfo(customers);// add customers argument
                     break;
                 case 6:
                     ReservationsController.showAllReservations(reservations, scanner);
