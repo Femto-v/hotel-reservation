@@ -100,9 +100,9 @@ public class Reservation {
 		System.out.println("******* Room informations *******");
 		room.print();
 		System.out.println("*********** Total ***********");
-		double price = days*room.getPrice();
-		System.out.println("Price: "+price);
-		System.out.println("Total after discount: "+this.price);
+		double total = days*room.getPrice();
+		System.out.println("Price for room: "+this.price);
+		System.out.println("Total price: "+total);
 		System.out.println("Payment Status: "+ this.status);
 		System.out.println("Payment Method: "+this.paymentMethod);
 		System.out.println("***********************************\n");
