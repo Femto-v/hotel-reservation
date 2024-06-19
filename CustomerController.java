@@ -100,7 +100,8 @@ public class CustomerController implements Searchable {
         customer.setphoneNo(phoneNo);
     }
 
-    public static Customer findCustomerById(int customerId) {
+    //added arraylist customer argument
+    public static Customer findCustomerById(ArrayList<Customer> customers,int customerId) {
         for (Customer customer : customers) {
             if (customer.getId() == customerId) {
                 return customer;
