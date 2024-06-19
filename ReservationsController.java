@@ -18,7 +18,7 @@ public class ReservationsController {
         scanner.nextLine();
 
         // Condition if customer id null
-        Customer customer = CustomerController.findCustomerById(customers, CustomerId);
+        Customer customer = CustomerController.findCustomerById(CustomerId);
 
         if (customer == null) {
             System.out.println("Customer ID not found. Please register first.\n");
