@@ -40,6 +40,14 @@ public class Main {
             int UserOpt = scanner.nextInt();
             scanner.nextLine(); 
             System.out.println();
+
+            // Read password from file
+            String filePath = "password.txt"; // Update this path
+            String filePassword = PasswordUtils.readPasswordFromFile(filePath);
+            if (filePassword == null) {
+                System.out.println("Error reading password file.");
+                return;
+            }
             
             // Condition (after choose number) by using if else
             if(UserOpt == 1)
@@ -56,7 +64,7 @@ public class Main {
                     System.out.println("");
 
                     try{
-                        if(pw.equals("admin123"))
+                        if(pw.equals(filePassword))
                         {
                             AdminMenu(scanner, employees);
                             break;
