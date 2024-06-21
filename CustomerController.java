@@ -57,7 +57,7 @@ public class CustomerController implements Searchable {
         }
     }
 
-    public static void editCustomer(Scanner scn) {
+    public static void editCustomer(ArrayList<Customer> customers,Scanner scn) {
         System.out.print("Please enter your id number: ");
         int id = scn.nextInt();
         scn.nextLine();
