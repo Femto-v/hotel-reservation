@@ -126,21 +126,26 @@ public class ReservationsController {
     }
 
     public static void showAllReservations(ArrayList<Reservation> reservations, Scanner scanner) {
-        for (Reservation r : reservations) {
-            System.out.println("\n---------------------------------------");
-            System.out.println("id: " + reservations.indexOf(r));
-            System.out.println("Arrival Date: " + r.getArrivalDatetoString());
-            System.out.println("Departure Date: " + r.getDepartureDatetoString());
-            System.out.println("Customer Name: " + r.getCustomer().getName());
-            System.out.println("Room id: " + r.getRoom().getID());
-            System.out.println("Price: " + r.getPrice());
-            System.out.println("Status: " + r.getStatus());
-            if (r.getStatus().equals("Paid")) {
-                System.out.println("Payment Method: " + r.getPaymentMethod());
+        if (reservations.isEmpty()) {
+            System.out.println("No reservation records.");
+        } else {
+            for (Reservation r : reservations) {
+                System.out.println("\n---------------------------------------");
+                System.out.println("id: " + reservations.indexOf(r));
+                System.out.println("Arrival Date: " + r.getArrivalDatetoString());
+                System.out.println("Departure Date: " + r.getDepartureDatetoString());
+                System.out.println("Customer Name: " + r.getCustomer().getName());
+                System.out.println("Room id: " + r.getRoom().getID());
+                System.out.println("Price: " + r.getPrice());
+                System.out.println("Status: " + r.getStatus());
+                if (r.getStatus().equals("Paid")) {
+                    System.out.println("Payment Method: " + r.getPaymentMethod());
+                }
+                System.out.println("---------------------------------------\n");
             }
-            System.out.println("---------------------------------------\n");
         }
     }
+    
 
     public static void getReservationbyCustomerName(ArrayList<Reservation> reservations, Scanner scanner) {
         System.out.println("Enter Customer name: ");
